@@ -1,0 +1,43 @@
+
+  *Session : Algorithms library
+  *By : Eslam kliyeb
+  *On : 06/01/2023
+=======================================================================================================================================================
+Name fun                                                    |                     what do?!                                         |     Complexity
+=======================================================================================================================================================
+========================================*Non-modifying sequence operations*============================================================================
+=======================================================================================================================================================
+count(v.cbegin(), v.cend(), target)                         | determine how many integers match a target value                      |    O(N) 
+count_if(v.begin(), v.end(), [](int i){return i % 4 == 0;}) | determine how many integers match a target value if true              |    O(N)
+find(begin(v), end(v), n1)                                  | finds the first element satisfying specific criteria                  |    O(N) 
+=======================================================================================================================================================
+=========================================*Modifying sequence operations*===============================================================================
+=======================================================================================================================================================
+copy(begin1, end1, begin2)                                  | copies a range of elements to a new location                          |   O(N)
+fill(begin, end, val)                                       | copy-assigns the given value to every element in a range              |   O(N) 
+reverse(begin, end)	                                    | reverses the order of elements in a range                             |   O(N)
+unique(begin, end)                                          | removes consecutive duplicate elements in a range                     |   O(N)
+swap(val1,val2)                                             | swaps the values of two objects                                       |   O(1)                                                               
+=======================================================================================================================================================
+======================================================*Sorting operations*=============================================================================
+is_sorted(begin, end)                                       | checks whether a range is sorted into ascending order                 |   O(N)
+sort(begin, end, f)			                        | sorts a range into ascending order                                    |   O(NLog(N))
+=======================================================================================================================================================
+=====================================================*Binary search operations (on sorted ranges)======================================================
+binary_search(begin, end, val)                              |determines if an element exists in a partially-ordered range           |   O(Log(N))
+lower_bound(begin, end, val)		                        | returns an iterator to the first element not less than the given value|   O(Log(N))
+upper_bound(begin, end, val)		                        | returns an iterator to the first element greater than a certain value |   O(Log(N))
+=======================================================================================================================================================
+======================================================*Minimum/maximum operation*======================================================================
+min_element(begin, end)                                     | returns the smallest element in a range                               |   O(N)
+max_element(begin, end)                                     | returns the largest element in a range                                |   O(N)
+max(val1, val2)                                             | returns the greater of the given values                               |   O(1)
+min(val1, val2)                                             | returns the smaller of the given values                               |   O(1)
+=======================================================================================================================================================
+===================================================*Comparison operations*=============================================================================
+lexicographical_compare(one, one + 13, two,two + 3))        | returns true if one range is lexicographically less than another      |   O(1)
+=======================================================================================================================================================
+================================================*Permutation operations*===============================================================================
+next_permutation(begin, end)		                        | generates the next greater lexicographic permutation of a range of elements  |  O(N)
+prev_permutation(begin, end)		                        | generates the next greater lexicographic permutation of a range of elements  |  O(N)
+=======================================================================================================================================================
