@@ -2,7 +2,7 @@
  *By : Eslam kliyeb
  *On : 06/01/2023
 =============================================================================================================================
-Name fun                                                  |              what do?!                           |     Complexity
+Name fun                                         |              what do?!                           |     Complexity
 =============================================================================================================================
 =======================================*Non-modifying sequence operations*===================================================
 =============================================================================================================================
@@ -14,13 +14,13 @@ find(begin(v), end(v), n1)                                | finds the first elem
 ===============================================================================================================================
 copy(begin1, end1, begin2)                  | copies a range of elements to a new location                 |   O(N)
 fill(begin, end, val)                       | copy-assigns the given value to every element in a range     |   O(N) 
-reverse(begin, end)	                        | reverses the order of elements in a range                    |   O(N)
+reverse(begin, end)	                    | reverses the order of elements in a range                    |   O(N)
 unique(begin, end)                          | removes consecutive duplicate elements in a range            |   O(N)
 swap(val1,val2)                             | swaps the values of two objects                              |   O(1)                         
 ================================================================================================================================
 ======================================================*Sorting operations*======================================================
 is_sorted(begin, end)                      | checks whether a range is sorted into ascending order                 |   O(N)
-sort(begin, end, f)			                   | sorts a range into ascending order                                    |   O(NLog(N))
+sort(begin, end, f)	                   |sorts a range into ascending order                                     |   O(NLog(N))
 =================================================================================================================================
 =========================================*Binary search operations (on sorted ranges)============================================
 binary_search(begin, end, val)             |determines if an element exists in a partially-ordered range           |   O(Log(N))
