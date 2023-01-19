@@ -1019,7 +1019,7 @@ dabc
 
 A priority queue is a container that provides constant time extraction of the largest element, at the expense of logarithmic insertion. It is similar to the heap in which we can add element at any time but only the maximum element can be retrieved. In a priority queue, an element with high priority is served before an element with low priority.
 
-![Priority Queue](General/Priority Queue.png "Priority Queue")
+![Priority Queue](General/Priority%20Queue.png "Priority Queue")
 
 **Use for**
 * First-In First-Out operations where **priority** overrides arrival time
