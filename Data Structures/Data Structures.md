@@ -40,6 +40,8 @@
 
 Vectors are sequence containers that have dynamic size. In other words, vectors are dynamic arrays. Just like arrays, vector elements are placed in contiguous storage location so they can be accessed and traversed using iterators. To traverse the vector we need the position of the first and last element in the vector which we can get through begin() and end() or we can use indexing from 0 to size().
 
+![Vector](General/Vector.png "Vector")
+
 **Use for**
 * Simple storage
 * Adding but not deleting
@@ -174,6 +176,8 @@ In C++, the STL deque is a sequential container that provides the functionality 
 
 In a regular queue, elements are added from the rear and removed from the front. However, in a deque, we can insert and remove elements from both the front and rear.
 
+![Deque](General/Deque.png "Deque")
+
 **Use for**
 * Similar purpose of `std::vector`
 * Basically `std::vector` with efficient `push_front` and `pop_front`
@@ -282,6 +286,8 @@ deque1 = 1, 2, 3, 4, 5,
 List is a sequence container which takes constant time in inserting and removing elements. List in STL is implemented as Doubly Link List.
 The elements from List cannot be directly accessed. For example to access element of a particular position ,you have to iterate from a known position to that particular position.
 
+![List](General/List.png "List")
+
 **Use for**
 * Insertion into the middle/beginning of the list
 * Efficient sorting (pointer swap vs. copying)
@@ -379,6 +385,8 @@ Elements after removing all occurrence of 5  from List
 ### 1.5 Map `std::map` and `std::multimap` and `std::unordered_map`
 
 Maps are containers which store elements by mapping their value against a particular key. It stores the combination of key value and mapped value following a specific order. Here key value are used to uniquely identify the elements mapped to it. The data type of key value and mapped value can be different. Elements in map are always in sorted order by their corresponding key and can be accessed directly by their key using bracket operator ([ ]).
+
+![Map](General/Map.jpeg "Map")
 
 **`Map vs  Multimap`**
 
@@ -611,6 +619,8 @@ Map is not empty
 ### 1.6 Set `std::set` and `std::multistd` and `std::unordered_set`
 
 In  C++ STL(standard template library), there are some special containers: Set, Multiset, Unordered set, Unordered multiset. These containers are very helpful in programming because of their features. In this article, we will discuss the features of Set, Multiset, Unordered set, and Unordered multiset, and we will see how the containers differ from each other.
+
+![set](General/set.png "set")
 
 **1-Set**
 
@@ -924,6 +934,8 @@ Stack is empty.
 
 Queue is a container which follows FIFO order (First In First Out) . Here elements are inserted at one end (rear ) and extracted from another end(front) .
 
+![Queue](General/Queue.png "Queue")
+
 **Use for**
 * First-In First-Out operations
 * Ex: Simple online ordering system (first come first served)
@@ -1005,6 +1017,8 @@ dabc
 
 A priority queue is a container that provides constant time extraction of the largest element, at the expense of logarithmic insertion. It is similar to the heap in which we can add element at any time but only the maximum element can be retrieved. In a priority queue, an element with high priority is served before an element with low priority.
 
+![Priority Queue](General/Priority Queue.png "Priority Queue")
+
 **Use for**
 * First-In First-Out operations where **priority** overrides arrival time
 * Ex: CPU scheduling (smallest job first, system/user priority)
@@ -1079,6 +1093,8 @@ int main()
 ### 1.10 Pair `std::pair`
 
 Pair is a container that can be used to bind together a two values which may be of different types. Pair provides a way to store two heterogeneous objects as a single unit.
+
+![pair](General/pair.png "Priority Queue")
 
 **inititialization**
 ```c++
