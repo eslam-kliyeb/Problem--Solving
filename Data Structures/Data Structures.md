@@ -1,48 +1,27 @@
-# C++ Data Structures and Algorithms Cheat Sheet
+# C++ Data Structures
 
 ## Table of Contents
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [C++ Data Structures and Algorithms Cheat Sheet](#c-data-structures-and-algorithms-cheat-sheet)
+- [C++ Data Structures](#c-data-structures)
 	- [Table of Contents](#table-of-contents)
 	- [1.0 Data Structures](#10-data-structures)
-		- [1.1 Overview](#11-overview)
-		- [1.2 Vector `std::vector`](#12-vector-stdvector)
-		- [1.3 Deque `std::deque`](#13-deque-stddeque)
-		- [1.4 List `std::list` and `std::forward_list`](#14-list-stdlist-and-stdforward_list)
-		- [1.5 Map `std::map` and `std::unordered_map`](#15-map-stdmap-and-stdunordered_map)
-		- [1.6 Set `std::set`](#16-set-stdset)
-		- [1.7 Stack `std::stack`](#17-stack-stdstack)
-		- [1.8 Queue `std::queue`](#18-queue-stdqueue)
-		- [1.9 Priority Queue `std::priority_queue`](#19-priority-queue-stdpriority_queue)
-		- [1.10 Heap `std::priority_queue`](#110-heap-stdpriority_queue)
-	- [2.0 Trees](#20-trees)
-		- [2.1 Binary Tree](#21-binary-tree)
-		- [2.2 Balanced Trees](#22-balanced-trees)
-		- [2.3 Binary Search](#23-binary-search)
-		- [2.4 Depth-First Search](#24-depth-first-search)
-		- [2.5 Breadth-First Search](#25-breadth-first-search)
-	- [3.0 NP Complete Problems](#30-np-complete-problems)
-		- [3.1 NP Complete](#31-np-complete)
-		- [3.2 Traveling Salesman Problem](#32-traveling-salesman-problem)
-		- [3.3 Knapsack Problem](#33-knapsack-problem)
-	- [4.0 Algorithms](#40-algorithms)
-		- [4.1 Insertion Sort](#41-insertion-sort)
-		- [4.2 Selection Sort](#42-selection-sort)
-		- [4.3 Bubble Sort](#43-bubble-sort)
-		- [4.4 Merge Sort](#44-merge-sort)
-		- [4.5 Quicksort](#45-quicksort)
-
+		- [1 Overview](#11-overview)
+		- [2 Vector `std::vector`](#12-vector-stdvector)
+		- [3 Deque `std::deque`](#13-deque-stddeque)
+		- [4 List `std::list` and `std::forward_list`](#14-list-stdlist-and-stdforward_list)
+		- [5 Map `std::map` and `std::unordered_map`](#15-map-stdmap-and-stdunordered_map)
+		- [6 Set `std::set`](#16-set-stdset)
+		- [7 Stack `std::stack`](#17-stack-stdstack)
+		- [8 Queue `std::queue`](#18-queue-stdqueue)
+		- [9 Priority Queue `std::priority_queue`](#19-priority-queue-stdpriority_queue)
+		- [10 Pair `std::pair`](#110-pair-stdpair)
 <!-- /TOC -->
 
 
 ## 1.0 Data Structures
 ### 1.1 Overview
-
-![Legend](General/Legend.png)
-
-![DataStructures](General/Data%20Structures.png "Data Structures")
 
 ![ComplexityChart](General/Complexity%20Chart.png "Complexity Chart")
 
@@ -64,16 +43,21 @@
 
 **Time Complexity**
 
-| Operation    | Time Complexity |
-|--------------|-----------------|
-| Insert Head  |          `O(n)` |
-| Insert Index |          `O(n)` |
-| Insert Tail  |          `O(1)` |
-| Remove Head  |          `O(n)` |
-| Remove Index |          `O(n)` |
-| Remove Tail  |          `O(1)` |
-| Find Index   |          `O(1)` |
-| Find Object  |          `O(n)` |
+| Operation    | Time Complexity |             what do?!                                            |
+|--------------|-----------------|------------------------------------------------------------------|
+| at()         |          `O(1)` |Returns the reference to the element at a particular position (can also be done using ‘[ ]’ operator)|    
+| back()       |          `O(1)` |Returns the reference to the last element. Its time complexity is |
+| begin()      |          `O(1)` |Returns an iterator pointing to the first element of the vector   |                                        
+| clear()  |          `O(N)` |Deletes all the elements from the vector and assign an empty vector                                                                  |
+| empty() |          `O(1)` |Returns a boolean value, true if the vector is empty and false if the vector is not empty                                                                  | 
+| end()  |          `O(1)` |Returns an iterator pointing to a position which is next to the last element of the vector                                                                  |
+| erase()   |          `O(N + M) where N is the number of the elements erased and M is the number of the elements moved` | Deletes a single element or a range of elements                                                                  |
+| front()  |          `O(1)` |Returns the reference to the first element                                                                  |
+| insert() | `O(N + M) where N is the number of elements inserted and M is the number of the elements moved` |Inserts new elements into the vector at a particular position|
+| pop_back() |`O(1)`|Removes the last element from the vector |
+| push_back() |`O(1)`| Inserts a new element at the end of the vector|
+|resize()|`O(N) where N is the size of the resized vector`|Resizes the vector to the new length which can be less than or greater than the current length|
+|size()|`O(1)`|Returns the number of elements in the vector
 
 **Example Code**
 ```c++
@@ -485,7 +469,7 @@ unsigned int size = p.size();
 p.pop();
 ```
 -------------------------------------------------------
-### 1.10 Heap `std::priority_queue`
+### 1.10 Pair `std::pair`
 **Notes**
 * A heap is essentially an instance of a priority queue
 * A **min** heap is structured with the root node as the smallest and each child subsequently larger than its parent
