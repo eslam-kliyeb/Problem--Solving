@@ -22,9 +22,19 @@
 
 ## 1.0 Data Structures
 ### 1.1 Overview
+
+**`STL components`**
+
 ![25_627_ca980518add852d](General/25_627_ca980518add852d.png "25_627_ca980518add852d")
+
+**`Time`**
+
 ![zntFK](General/zntFK.png "zntFK")
+
+**`Data Structure Selection`**
+
 ![DataStructureSelection](General/Data%20Structures%20Selection.png "Data Structures Selection")
+
 -------------------------------------------------------
 ### 1.2 Vector `std::vector`
 
