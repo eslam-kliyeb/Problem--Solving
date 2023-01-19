@@ -160,6 +160,11 @@ int main()
 ```
 -------------------------------------------------------
 ### 1.3 Deque `std::deque`
+
+In C++, the STL deque is a sequential container that provides the functionality of a double-ended queue data structure.
+
+In a regular queue, elements are added from the rear and removed from the front. However, in a deque, we can insert and remove elements from both the front and rear.
+
 **Use for**
 * Similar purpose of `std::vector`
 * Basically `std::vector` with efficient `push_front` and `pop_front`
@@ -173,16 +178,17 @@ int main()
 
 **Time Complexity**
 
-| Operation    | Time Complexity |
-|--------------|-----------------|
-| Insert Head  |          `O(1)` 		|
-| Insert Index |          `O(n) or O(1)`|
-| Insert Tail  |          `O(1)` 		|
-| Remove Head  |          `O(1)` 		|
-| Remove Index |          `O(n)` 		|
-| Remove Tail  |          `O(1)` 		|
-| Find Index   |          `O(1)` 		|
-| Find Object  |          `O(n)` 		|
+| Operation    | Time Complexity |             what do?!                                            |
+|--------------|-----------------|------------------------------------------------------------------|
+| push_back()  |          `O(1)` 		|inserts element at the back|
+| push_front() |          `O(1)`|inserts element at the front|
+| pop_back()  |          `O(1)` 		|removes element from the back|
+| pop_front()  |          `O(1)` 		|removes element from the front|
+| front() |          `O(1)` 		|returns the element at the front|
+| back()  |          `O(1)` 		|returns the element at the back|
+| size()   |          `O(1)` 		|returns the number of elements|
+| empty()  |          `O(1)` 		|returns true if the deque is empty|
+|at()|`O(n)`|sets/returns the element at specified index|
 
 **Example Code**
 ```c++
