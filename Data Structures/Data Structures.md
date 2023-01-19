@@ -28,6 +28,9 @@
 ![DataStructureSelection](General/Data%20Structures%20Selection.png "Data Structures Selection")
 -------------------------------------------------------
 ### 1.2 Vector `std::vector`
+
+Vectors are sequence containers that have dynamic size. In other words, vectors are dynamic arrays. Just like arrays, vector elements are placed in contiguous storage location so they can be accessed and traversed using iterators. To traverse the vector we need the position of the first and last element in the vector which we can get through begin() and end() or we can use indexing from 0 to size().
+
 **Use for**
 * Simple storage
 * Adding but not deleting
@@ -58,6 +61,28 @@
 | push_back() |`O(1)`| Inserts a new element at the end of the vector|
 |resize()|`O(N) where N is the size of the resized vector`|Resizes the vector to the new length which can be less than or greater than the current length|
 |size()|`O(1)`|Returns the number of elements in the vector
+
+**Initialization**
+```c++
+vector<int> a;                                       // empty vector of ints
+vector<int> b (5, 10);                                // five ints with value 10
+vector<int> c (b.begin(),b.end());                     // iterating through second
+vector<int> d (c);                                   // copy of c
+```
+
+**Traverse**
+```c++
+void traverse(vector<int> v)
+{
+    vector <int>::iterator it;
+    for(it = v.begin();it != v.end();++it)
+        cout << *it <<  ‘ ‘;
+    cout << endl;
+    for(int i = 0;i < v.size();++i)
+        cout << v[i] << ‘ ‘;
+    cout << endl;
+ }
+```
 
 **Example Code**
 ```c++
@@ -97,6 +122,41 @@ v.pop_back();                   // tail
 
 // Clear
 v.clear();
+```
+**Implementation**
+```c++
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    vector <int> v;
+    vector <int>::iterator it;
+    v.push_back(5);
+    while(v.back() > 0)
+        v.push_back(v.back() - 1);
+    for(it = v.begin(); it != v.end();++it)
+        cout << *it << ' ';
+    cout << endl;
+    for(int i = 0;i < v.size();++i)
+        cout << v.at(i) << ' ';
+    cout << endl;
+    while(!v.empty())
+    {
+        cout << v.back() << ' ';
+        v.pop_back();
+    }
+    cout << endl;
+    return 0;
+}
+```
+**Output**
+```c++
+5 4 3 2 1 0
+5 4 3 2 1 0
+0 1 2 3 4 5
 ```
 -------------------------------------------------------
 ### 1.3 Deque `std::deque`
