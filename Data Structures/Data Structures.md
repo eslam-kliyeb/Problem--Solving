@@ -12,7 +12,7 @@
 		- [3 Deque `std::deque`](#13-deque-stddeque)
 		- [4 List `std::list` and `std::forward_list`](#14-list-stdlist-and-stdforward_list)
 		- [5 Map `std::map` and `std::unordered_map`](#15-map-stdmap-and-stdunordered_map)
-		- [6 Set `std::set`](#16-set-stdset)
+		- [6 Set `std::set` and `std::multistd`](#16-set-stdset-and-stdmultistd)
 		- [7 Stack `std::stack`](#17-stack-stdstack)
 		- [8 Queue `std::queue`](#18-queue-stdqueue)
 		- [9 Priority Queue `std::priority_queue`](#19-priority-queue-stdpriority_queue)
@@ -526,9 +526,10 @@ Number of elements with key = 'a' in map mp are : 1
 Map is not empty
 ```
 -------------------------------------------------------
-### 1.6 Set `std::set`
+### 1.6 Set `std::set` and `std::multistd`
 
 Sets are containers which store only unique values and permit easy look ups. The values in the sets are stored in some specific order (like ascending or descending). Elements can only be inserted or deleted, but cannot be modified. We can access and traverse set elements using iterators just like vectors.
+multiset<T> ms;     //the same as set but allows Duplicates.
 
 **Use for**
 * Removing duplicates
