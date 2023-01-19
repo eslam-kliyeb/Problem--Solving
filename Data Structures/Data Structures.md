@@ -301,6 +301,9 @@ l.reverse();
 ```
 -------------------------------------------------------
 ### 1.5 Map `std::map` and `std::unordered_map`
+
+Maps are containers which store elements by mapping their value against a particular key. It stores the combination of key value and mapped value following a specific order. Here key value are used to uniquely identify the elements mapped to it. The data type of key value and mapped value can be different. Elements in map are always in sorted order by their corresponding key and can be accessed directly by their key using bracket operator ([ ]).
+
 **Use for**
 * Key-value pairs
 * Constant lookups by key
@@ -322,22 +325,46 @@ l.reverse();
 
 **`std::map`**
 
-| Operation           | Time Complexity |
-|---------------------|-----------------|
-| Insert              |     `O(log(n))` |
-| Access by Key       |     `O(log(n))` |
-| Remove by Key       |     `O(log(n))` |
-| Find/Remove Value   |     `O(log(n))` |
+| Operation    | Time Complexity |             what do?!                                            |
+|--------------|-----------------|------------------------------------------------------------------|
+| at( )              |     `O(log(n))` |Returns a reference to the mapped value of the element identified with key|
+| count( )       |     `O(log(n))` |searches the map for the elements mapped by the given key and returns the number of matches.As map stores each element with unique key, then it will return 1 if match if found otherwise return 0|
+| find( )       |     `O(log(n))` |Searches the map for the element with the given key, and returns an iterator to it, if it is present in the map otherwise it returns an iterator to the theoretical element which follows the last element of map|
+| clear( )   |     `O(n)` |clears the map, by removing all the elements from the map and leaving it with its size 0|
+|begin( )|`O(1)`|returns an iterator(explained above) referring to the first element of map|
+|end( )|`O(1)`|returns an iterator referring to the theoretical element(doesn’t point to an element) which follows the last element|
+|insert( )|`O(log(n)), when only element is inserted and O(1) when position is also given`|insert a single element or the range of element in the map|
+|erase( )|`O(log(n))`|removes a single element or the range of element from the map|
+|empty( )|`O(1)`|checks whether the map is empty or not. It doesn’t modify the map.It returns 1 if the map is empty otherwise returns 0|
+
 
 **`std::unordered_map`**
 
-| Operation           | Time Complexity |
-|---------------------|-----------------|
-| Insert              |          `O(1)` |
-| Access by Key       |          `O(1)` |
-| Remove by Key       |          `O(1)` |
-| Find/Remove Value   |              -- |
+| Operation    | Time Complexity |             what do?!                                            |
+|--------------|-----------------|------------------------------------------------------------------|
+| insert()|`Single element insertions:Average case: constant.Worst case: linear in container size.Multiple elements insertion:Average case: linear in the number of elements inserted.Worst case: N*(size+1): number of elements inserted times the container size plus one.` |insert one or more key-value pairs|
+| count()|`Average case: linear in the number of elements counted.Worst case: linear in container size.`|returns 1 if key exists and 0 if not|
+| find()|`Average case: constant.Worst case: linear in container size.` |returns the iterator to the element with the specified key|
+| at()  | `Average case: constant.Worst case: linear in container size.` |returns the element at the specified key|
+|size()|`O(1)`|returns the number of elements|
+|empty()|`O(1)`|returns true if the unordered map is empty|
+|erase()|`Average case: Linear in the number of elements removed (which is constant for versions (1) and (2)).Worst case: Linear in the container size.`|removes elements with specified key|
+|clear()|`O(n)`|removes all elements|
 
+**Initialize Map**
+```c++
+map <char ,int > mp;
+
+mp[‘b’]  = 1;
+```
+**Initialize an Unordered Map**
+```c++
+unordered_map<string, int> unordered_map1 = {
+  {"One", 1},
+  {"Two", 2},
+  {"Three", 3}
+};
+```
 **Example Code**
 ```c++
 std::map<std::string, std::string> m;
@@ -375,6 +402,104 @@ bool exists = (m.find("key") != m.end());
 
 // Count the number of elements with a certain key
 unsigned int count = m.count("key");
+```
+**Implementation**
+```c++
+#include <iostream>
+#include <map>
+using namespace std;
+int main(){
+    map <char,int> mp;
+    map <char,int> mymap,mymap1;
+
+    //insert elements individually in map with the combination of key value and value of element
+    mp.insert(pair<char,int>('a',2));   //key is 'c' and 2 is value.
+    mp.insert(pair<char,int>('b',1));
+    mp.insert(pair<char,int>('c',43));
+
+    //inserts elements in range using insert() function in map 'mymap'.
+    mymap.insert(mp.begin(),mp.end());
+
+    //declaring iterator for map
+    map <char,int>::iterator it;
+
+    //using find() function to return reference of element mapped by key 'b'.
+    it = mp.find('b');
+
+    //prints key and element's value.
+    cout<<"Key and element's value of map are: ";
+    cout<<it->first<<" and "<<it->second<<endl;
+
+    //alternative way to insert elements by mapping with their keys.
+    mymap1['x'] = 23;
+    mymap1['y'] = 21;
+
+    cout<<"Printing element mapped by key 'b' using at() function : "<<mp.at('b')<<endl;
+
+    //swap contents of 2 maps namely mymap and mymap1.
+    mymap.swap(mymap1);
+
+    /* prints swapped elements of mymap and mymap1 by iterating all the elements through    
+        using   iterator. */
+    cout<<"Swapped elements and their keys of mymap are: "<<endl;
+    for(it=mymap.begin();it!=mymap.end();it++)
+    {
+    cout<<it->first<<" "<<it->second<<endl;
+    }
+    cout<<"Swapped elements and their keys of mymap1 are: "<<endl;
+    for(it=mymap1.begin();it!=mymap1.end();it++)
+    {
+    cout<<it->first<<" "<<it->second<<endl;
+    }
+    //erases element mapped at 'c'.
+    mymap1.erase('c');
+
+    //prints all elements of mymap after erasing element at 'c'.
+
+    cout<<"Elements of mymap1 after erasing element at key 'c' : "<<endl;
+    for(it=mymap1.begin();it!=mymap1.end();it++)
+    {
+    cout<<it->first<<" "<<it->second<<endl;
+    }
+
+    //erases elements in range from mymap1
+    mymap1.erase(mymap1.begin(),mymap1.end());
+
+    cout<<"As mymap1 is empty so empty() function will return 1 : " << mymap1.empty()<<endl;
+
+    //number of elements with key = 'a' in map mp.
+    cout<<"Number of elements with key = 'a' in map mp are : "<<mp.count('a')<<endl;
+
+    //if mp is empty then itmp.empty will return 1 else 0.
+    if(mp.empty())
+    {
+        cout<<"Map is empty"<<endl;
+    }
+    else
+    {
+        cout<<"Map is not empty"<<endl;
+    }
+
+    return 0;
+}
+```
+**Output**
+```c++
+Key and element's value of map are: b and 1
+Printing element mapped by key 'b' using at() function : 1
+Swapped elements and their keys of mymap are: 
+x 23
+y 21
+Swapped elements and their keys of mymap1 are: 
+a 2
+b 1
+c 43
+Elements of mymap1 after erasing element at key 'c' : 
+a 2
+b 1
+As mymap1 is empty so empty() function will return 1 : 1
+Number of elements with key = 'a' in map mp are : 1
+Map is not empty
 ```
 -------------------------------------------------------
 ### 1.6 Set `std::set`
