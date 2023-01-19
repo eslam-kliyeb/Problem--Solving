@@ -478,17 +478,22 @@ int main()
 ```
 -------------------------------------------------------
 ### 1.7 Stack `std::stack`
+
+Stack is a container which follows the LIFO (Last In First Out) order and the elements are inserted and deleted from one end of the container. The element which is inserted last will be extracted first.
+
 **Use for**
 * First-In Last-Out operations
 * Reversal of elements
 
 **Time Complexity**
 
-| Operation    | Time Complexity |
-|--------------|-----------------|
-| Push         |          `O(1)` |
-| Pop          |          `O(1)` |
-| Top          |          `O(1)` |
+| Operation    | Time Complexity |             what do?!                                            |
+|--------------|-----------------|------------------------------------------------------------------|
+| push( )         |          `O(1)` |Insert element at the top of stack |
+| pop( )          |          `O(1)` |removes element from top of stack|
+| top( )         |          `O(1)` |access the top element of stack|
+|empty( )|`O(1)`|checks if the stack is empty or not|
+|size( )|`O(1)`|returns the size of stack|
 
 **Example Code**
 ```c++
@@ -509,6 +514,57 @@ s.pop();
 
 // Top
 int top = s.top();
+```
+**Implementation**
+```c++
+#include <iostream>
+#include <stack>
+
+using namespace std;
+int main( )
+{
+    stack <int> s;  // declaration of stack
+
+    //inserting 5 elements in stack from 0 to 4.
+    for(int i = 0;i < 5; i++)
+    {
+        s.push( i ) ;
+    }
+
+    //Now the stack is {0, 1, 2, 3, 4}
+
+    //size of stack s
+    cout<<”Size of stack is: ” <<s.size( )<<endl;
+
+    //accessing top element from stack, it will be the last inserted element.
+    cout<<”Top element of stack is: ” <<s.top( ) <<endl ;
+
+    //Now deleting all elements from stack 
+    for(int i = 0;i < 5;i++)
+    {
+        s.pop( );
+    }
+
+    //Now stack is empty,so empty( ) function will return true.
+
+    if(s.empty())
+    {
+        cout <<”Stack is empty.”<<endl;
+    }
+    else
+    {
+        cout <<”Stack is Not empty.”<<endl;
+    }
+
+    return 0;
+
+}
+```
+**Output**
+```c++
+Size of stack is: 5
+Top element of stack is: 4
+Stack is empty.
 ```
 -------------------------------------------------------
 ### 1.8 Queue `std::queue`
