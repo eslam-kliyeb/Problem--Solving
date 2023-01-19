@@ -378,6 +378,9 @@ unsigned int count = m.count("key");
 ```
 -------------------------------------------------------
 ### 1.6 Set `std::set`
+
+Sets are containers which store only unique values and permit easy look ups. The values in the sets are stored in some specific order (like ascending or descending). Elements can only be inserted or deleted, but cannot be modified. We can access and traverse set elements using iterators just like vectors.
+
 **Use for**
 * Removing duplicates
 * Ordered dynamic storage
@@ -391,11 +394,28 @@ unsigned int count = m.count("key");
 
 **Time Complexity**
 
-| Operation    | Time Complexity |
-|--------------|-----------------|
-| Insert       |     `O(log(n))` |
-| Remove       |     `O(log(n))` |
-| Find         |     `O(log(n))` |
+| Operation    | Time Complexity |             what do?!                                            |
+|--------------|-----------------|------------------------------------------------------------------|
+| begin()       |     `O(1)`|  Returns an iterator to the first element of the set                                                                | 
+| clear()       |     `O(N) where N is the size of the set` |Deletes all the elements in the set and the set will be empty                                                                  |
+| count()         |     `O(log(n))` | Returns 1 or 0 if the element is in the set or not respectively                                                                 |
+|empty()|`O(n)`|Returns true if the set is empty and false if the set has at least one element|
+|end()|`O(1)`|Returns an iterator pointing to a position which is next to the last element|
+|erase()|`O(N) where N is the number of element deleted`|Deletes a particular element or a range of elements from the set|
+|find()|`O(log(n))`|Searches for a particular element and returns the iterator pointing to the element if the element is found otherwise it will return the iterator returned by end()|
+|insert()|`O(log(n))`|insert a new element|
+|size()|`O(1)`|Returns the size of the set or the number of elements in the set|
+
+**Traverse**
+```c++
+void traverse(set<int> s)
+{
+    set <int>::iterator it;
+    for(it = s.begin();it != s.end();++it)
+        cout << *it <<  ‘ ‘;
+    cout << endl;
+}
+```
 
 **Example Code**
 ```c++
@@ -431,6 +451,30 @@ bool exists = (s.find(20) != s.end());
 
 // Count the number of elements with a certain value
 unsigned int count = s.count(20);
+```
+**Implementation**
+```c++
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+int main()
+{
+    set <int> s;
+    set <int>::iterator it;
+    int A[] = {3, 5, 2, 1, 5, 4};
+    for(int i = 0;i < 6;++i)
+        s.insert(A[i]);
+    for(it = s.begin();it != s.end();++it)
+        cout << *it << ' ';
+    cout << endl;
+    return 0;
+}
+```
+**Output**
+```c++
+1 2 3 4 5
 ```
 -------------------------------------------------------
 ### 1.7 Stack `std::stack`
