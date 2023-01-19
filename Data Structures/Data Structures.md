@@ -555,8 +555,8 @@ Sets are containers which store only unique values and permit easy look ups. The
 |Deletion time   | log(n) + Rebalance  | Same as search|
 
 **Use unordered_set when**
-*We need to keep a set of distinct elements and no ordering is required.
-*We need single element access i.e. no traversal
+* We need to keep a set of distinct elements and no ordering is required.
+* We need single element access i.e. no traversal
 
 ```c++
 multiset<int> ms; 
