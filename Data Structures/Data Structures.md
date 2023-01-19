@@ -495,6 +495,11 @@ Stack is a container which follows the LIFO (Last In First Out) order and the el
 |empty( )|`O(1)`|checks if the stack is empty or not|
 |size( )|`O(1)`|returns the size of stack|
 
+**Declaration**
+```c++
+stack<int> s;
+```
+
 **Example Code**
 ```c++
 std::stack<int> s;
@@ -568,6 +573,9 @@ Stack is empty.
 ```
 -------------------------------------------------------
 ### 1.8 Queue `std::queue`
+
+Queue is a container which follows FIFO order (First In First Out) . Here elements are inserted at one end (rear ) and extracted from another end(front) .
+
 **Use for**
 * First-In First-Out operations
 * Ex: Simple online ordering system (first come first served)
@@ -577,6 +585,20 @@ Stack is empty.
 **Notes**
 * Often implemented as a `std::deque`
 
+**Time Complexity**
+
+| Operation    | Time Complexity |             what do?!                                            |
+|--------------|-----------------|------------------------------------------------------------------|
+|push( )|`O(1)`|inserts an element in queue at one end(rear )|
+|pop( )|`O(1)`|deletes an element from another end if queue(front)|
+|front( )|`O(1)`|access the element on the front end of queue|
+|empty( )|`O(1)`|checks if the queue is empty or not|
+|size( )|`O(1)`|returns the size of queue|
+
+**Declaration**
+```c++
+queue <int> q;
+```
 **Example Code**
 ```c++
 std::queue<int> q;
@@ -597,6 +619,38 @@ unsigned int size = q.size();
 
 // Remove
 q.pop();
+```
+**Implementation**
+```c++
+#include <iostream>
+#include <cstdio>
+#include <queue>
+
+using namespace std;
+
+int main() {
+    char qu[4] = {'a', 'b', 'c', 'd'};        
+    queue <char> q;
+    int N = 3;                            // Number of steps
+    char ch;
+    for(int i = 0;i < 4;++i)
+        q.push(qu[i]);
+    for(int i = 0;i < N;++i) {
+            ch = q.front();
+    q.push(ch);
+            q.pop();
+    }
+    while(!q.empty()) {
+        printf("%c", q.front());
+        q.pop();
+    }
+    printf("\n");
+    return 0;
+}
+```
+**Output**
+```c++
+dabc
 ```
 -------------------------------------------------------
 ### 1.9 Priority Queue `std::priority_queue`
