@@ -220,6 +220,10 @@ d.clear();
 ```
 -------------------------------------------------------
 ### 1.4 List `std::list` and `std::forward_list`
+
+List is a sequence container which takes constant time in inserting and removing elements. List in STL is implemented as Doubly Link List.
+The elements from List cannot be directly accessed. For example to access element of a particular position ,you have to iterate from a known position to that particular position.
+
 **Use for**
 * Insertion into the middle/beginning of the list
 * Efficient sorting (pointer swap vs. copying)
@@ -229,75 +233,89 @@ d.clear();
 
 **Time Complexity**
 
-| Operation    | Time Complexity |
-|--------------|-----------------|
-| Insert Head  |          `O(1)` |
-| Insert Index |          `O(n)` |
-| Insert Tail  |          `O(1)` |
-| Remove Head  |          `O(1)` |
-| Remove Index |          `O(n)` |
-| Remove Tail  |          `O(1)` |
-| Find Index   |          `O(n)` |
-| Find Object  |          `O(n)` |
+| Operation    | Time Complexity |             what do?!                                            |
+|--------------|-----------------|------------------------------------------------------------------|
+| begin()  |          `O(1)` |It returns an iterator pointing to the first element in list|
+| end() |          `O(1)` |It returns an iterator referring to the theoretical element(doesn’t point to an element) which follows the last element|
+| empty()  |          `O(1)` |It returns whether the list is empty or not.It returns 1 if the list is empty otherwise returns 0|
+| assign()  |          `O(n)` | It assigns new elements to the list by replacing its current elements and change its size accordingly|
+| back() |          `O(1)` |It returns reference to the last element in the list|
+| erase()  |          `O(n)` |It removes a single element or the range of element from the list|
+| front()   |          `O(1)` |It returns reference to the first element in the list|
+| push_back()  |          `O(1)` |It adds a new element at the end of the list, after its current last element|
+|push_front()|`O(1)`|It adds a new element at the beginning of the list, before its current first element|
+|remove()|`O(n)`|It removes all the elements from the list, which are equal to given element|
+|pop_back()|`O(1)`|It removes the last element of the list, thus reducing its size by 1|
+|pop_front()|`O(1)`|It removes the first element of the list, thus reducing its size by 1|
+|insert()|`O(n)`|It insert new elements in the list before the element on the specified position|
+|reverse ()|`O(n)`|It reverses the order of elements in the list|
+|size()|`O(1)`| It returns the number of elements in the list|
 
-**Example Code**
+**Implementation**
 ```c++
-std::list<int> l;
+#include <iostream>
+#include <list>
+using namespace std;
+int main()
+{
+    list <int> LI;
+    list <int>::iterator it;
+    //inserts elements at end of list
+    LI.push_back(4);
+    LI.push_back(5);
 
-//---------------------------------
-// General Operations
-//---------------------------------
+    //inserts elements at beginning of list
+    LI.push_front(3);
+    LI.push_front(5);
 
-// Insert head, index, tail
-l.push_front(value);                    // head
-l.insert(l.begin() + index, value);     // index
-l.push_back(value);                     // tail
+    //returns reference to first element of list
+    it = LI.begin();
 
-// Access head, index, tail
-int head = l.front();                                           // head
-int value = std::next(l.begin(), index);		        // index
-int tail = l.back();                                            // tail
+    //inserts 1 before first element of list
+    LI.insert(it,1);
 
-// Size
-unsigned int size = l.size();
+    cout<<"All elements of List LI are: " <<endl;
+    for(it = LI.begin();it!=LI.end();it++)
+    {
+        cout<<*it<<" ";
+    }
+    cout<<endl;
 
-// Iterate
-for(std::list<int>::iterator it = l.begin(); it != l.end(); it++) {
-    std::cout << *it << std::endl;
+    //reverse elements of list
+    LI.reverse();
+
+    cout<<"All elements of List LI are after reversing: " <<endl;
+    for(it = LI.begin();it!=LI.end();it++)
+    {
+         cout<<*it<<" ";
+    }
+    cout<<endl;
+
+    //removes all occurences of 5 from list
+    LI.remove(5);
+
+    cout<<"Elements after removing all occurence of 5 from List"<<endl;
+    for(it = LI.begin();it!=LI.end();it++)
+    {
+         cout<<*it<<" ";
+    }
+    cout<<endl;
+
+    //removes last element from list
+    LI.pop_back();
+    //removes first element from list
+    LI.pop_front();
+    return 0;
 }
-
-// Remove head, index, tail
-l.pop_front();                  // head
-l.erase(l.begin() + index);     // index
-l.pop_back();                   // tail
-
-// Clear
-l.clear();
-
-//---------------------------------
-// Container-Specific Operations
-//---------------------------------
-
-// Splice: Transfer elements from list to list
-//	splice(iterator pos, list &x)
-//  	splice(iterator pos, list &x, iterator i)
-//  	splice(iterator pos, list &x, iterator first, iterator last)
-l.splice(l.begin() + index, list2);
-
-// Remove: Remove an element by value
-l.remove(value);
-
-// Unique: Remove duplicates
-l.unique();
-
-// Merge: Merge two sorted lists
-l.merge(list2);
-
-// Sort: Sort the list
-l.sort();
-
-// Reverse: Reverse the list order
-l.reverse();
+```
+**Output**
+```c++
+All elements of List LI are: 
+1 5 3 4 5 
+All elements of List LI are after reversing: 
+5 4 3 5 1 
+Elements after removing all occurrence of 5  from List
+4 3 1
 ```
 -------------------------------------------------------
 ### 1.5 Map `std::map` and `std::unordered_map`
