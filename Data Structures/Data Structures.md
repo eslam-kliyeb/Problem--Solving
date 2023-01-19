@@ -367,11 +367,6 @@ Maps are containers which store elements by mapping their value against a partic
 * You would have to print/access the data (in sorted order).
 * You need predecessor/successor of elements.
 
-```c++
-multimap<int>mm; 
-//is nothing different than a normal map except the fact that in a multimap mutiple values can have the same key.And other factors are just //the same between a Map and a Multimap.
-```
-
 **Use for**
 * Key-value pairs
 * Constant lookups by key
@@ -432,6 +427,11 @@ unordered_map<string, int> unordered_map1 = {
   {"Two", 2},
   {"Three", 3}
 };
+```
+**Initialize Multi Map**
+```c++
+multimap<int>mm; 
+//is nothing different than a normal map except the fact that in a multimap mutiple values can have the same key.And other factors are just //the same between a Map and a Multimap.
 ```
 **Example Code**
 ```c++
