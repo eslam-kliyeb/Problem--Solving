@@ -22,9 +22,8 @@
 
 ## 1.0 Data Structures
 ### 1.1 Overview
-
-![ComplexityChart](General/Complexity%20Chart.png "Complexity Chart")
-
+![25_627_ca980518add852d](General/25_627_ca980518add852d.png "25_627_ca980518add852d")
+![zntFK](General/zntFK.png "zntFK")
 ![DataStructureSelection](General/Data%20Structures%20Selection.png "Data Structures Selection")
 -------------------------------------------------------
 ### 1.2 Vector `std::vector`
