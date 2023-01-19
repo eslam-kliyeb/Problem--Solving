@@ -202,15 +202,15 @@ In a regular queue, elements are added from the rear and removed from the front.
 **Iteration**
 ```c++
 for(int i = 0 ; i < n ; ++i){
-      scanf("%d", &x);
+      cin >> x;
       dq.push_back(x);
 }
 for(int i = 0 ; i < n ; ++i)
-    printf("%d ", dq[i]);
+   cout << dq[i];
 for(int x : dq)
-    printf("%d ", x);
+    cout << x;
 for(auto x = dq.begin() ; x!=dq.end() ; ++x)
-    printf("%d ", *x);
+    cout << *x ;
 ```
 
 **Example Code**
@@ -246,6 +246,35 @@ d.pop_back();                   // tail
 
 // Clear
 d.clear();
+```
+**Implementation**
+```c++
+#include <iostream>
+#include <deque>
+using namespace std;
+
+// function prototype
+void display_deque(deque<int>);
+
+int main() {
+ 
+  // uniform initialization 
+  deque<int> deque1 {1, 2, 3, 4, 5};
+
+  cout << "deque1 = ";
+
+  // display elements of deque1
+  for (int num : deque1) {
+    cout << num << ", ";
+  }
+
+  return 0;
+}
+```
+
+**Output**
+```c++
+deque1 = 1, 2, 3, 4, 5, 
 ```
 -------------------------------------------------------
 ### 1.4 List `std::list` and `std::forward_list`
