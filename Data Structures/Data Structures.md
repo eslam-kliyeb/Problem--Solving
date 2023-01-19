@@ -530,255 +530,45 @@ p.pop();
 ```
 -------------------------------------------------------
 ### 1.10 Pair `std::pair`
-**Notes**
-* A heap is essentially an instance of a priority queue
-* A **min** heap is structured with the root node as the smallest and each child subsequently larger than its parent
-* A **max** heap is structured with the root node as the largest and each child subsequently smaller than its parent
-* A min heap could be used for *Smallest Job First* CPU Scheduling
-* A max heap could be used for *Priority* CPU Scheduling
 
-**Max Heap Example (using a binary tree)**
+Pair is a container that can be used to bind together a two values which may be of different types. Pair provides a way to store two heterogeneous objects as a single unit.
 
-![MaxHeap](General/MaxHeap.png)
--------------------------------------------------------
-## 2.0 Trees
-### 2.1 Binary Tree
-* A binary tree is a tree with at most two (2) child nodes per parent
-* Binary trees are commonly used for implementing `O(log(n))` operations for ordered maps, sets, heaps, and binary search trees
-* Binary trees are **sorted** in that nodes with values greater than their parents are inserted to the **right**, while nodes with values less than their parents are inserted to the **left**
+**inititialization**
+```c++
+pair <int, char> p1;                    // default
+pair <int, char> p2 (1, ‘a’);            // value inititialization
+pair <int, char> p3 (p2);               // copy of p2
+```
+We can also initialize a pair using make_pair() function. make_pair(x, y) will return a pair with first element set to x and second element set to y.
 
-**Binary Search Tree**
+```c++
+p1 = make_pair(2, ‘b’);
+```
+To access the elements we use keywords, first and second to access the first and second element respectively.
 
-![BinarySearchTree](General/BinarySearchTree.png)
--------------------------------------------------------
-### 2.2 Balanced Trees
-* Balanced trees are a special type of tree which maintains its balance to ensure `O(log(n))` operations
-* When trees are not balanced the benefit of `log(n)` operations is lost due to the highly vertical structure
-* Examples of balanced trees:
-    * AVL Trees
-    * Red-Black Trees
+```c++
+cout << p2.first << ‘ ‘ << p2.second << endl;
+```
 
--------------------------------------------------------
-### 2.3 Binary Search
-**Idea:**
-1. If current element, return
-2. If less than current element, look left
-3. If more than current element, look right
-4. Repeat
+**Implementation**
+```c++
+#include <iostream>
+#include <utility>
 
-**Data Structures:**
-* Tree
-* Sorted array
+using namespace std;
 
-**Space:**
-* `O(1)`
-
-**Best Case:**
-* `O(1)`
-
-**Worst Case:**
-* `O(log n)`
-
-**Average:**
-* `O(log n)`
-
-**Visualization:**
-
-![BinarySearch](Searching/Animations/Binary%20Search.gif "Binary Search")
--------------------------------------------------------
-### 2.4 Depth-First Search
-**Idea:**
-1. Start at root node
-2. Recursively search all adjacent nodes and mark them as searched
-3. Repeat
-
-**Data Structures:**
-* Tree
-* Graph
-
-**Space:**
-* `O(V)`, `V = number of verticies`
-
-**Performance:**
-* `O(E)`, `E = number of edges`
-
-**Visualization:**
-
-![DepthFirstSearch](Searching/Animations/Depth-First%20Search.gif "Depth-First Search")
--------------------------------------------------------
-### 2.5 Breadth-First Search
-**Idea:**
-1. Start at root node
-2. Search neighboring nodes first before moving on to next level
-
-**Data Structures:**
-* Tree
-* Graph
-
-**Space:**
-* `O(V)`, `V = number of verticies`
-
-**Performance:**
-* `O(E)`, `E = number of edges`
-
-**Visualization:**
-
-![DepthFirstSearch](Searching/Animations/Breadth-First%20Search.gif "Breadth-First Search")
--------------------------------------------------------
-## 3.0 NP Complete Problems
-### 3.1 NP Complete
-* **NP Complete** means that a problem is unable to be solved in **polynomial time**
-* NP Complete problems can be *verified* in polynomial time, but not *solved*
-
--------------------------------------------------------
-### 3.2 Traveling Salesman Problem
-
--------------------------------------------------------
-### 3.3 Knapsack Problem
-
-[Implementation](NP-complete/knapsack/)
-
--------------------------------------------------------
-
-## 4.0 Algorithms
-###  4.1 Insertion Sort
-#### Idea
-1. Iterate over all elements
-2. For each element:
-    * Check if element is larger than largest value in sorted array
-3. If larger: Move on
-4. If smaller: Move item to correct position in sorted array
-
-#### Details
-* **Data structure:** Array
-* **Space:** `O(1)`
-* **Best Case:** Already sorted, `O(n)`
-* **Worst Case:** Reverse sorted, `O(n^2)`
-* **Average:** `O(n^2)`
-
-#### Advantages
-* Easy to code
-* Intuitive
-* Better than selection sort and bubble sort for small data sets
-* Can sort in-place
-
-#### Disadvantages
-* Very inefficient for large datasets
-
-#### Visualization
-
-![InsertionSort](Sorting/Animations/Insertion%20Sort.gif "Insertion Sort")
--------------------------------------------------------
-### 4.2 Selection Sort
-#### Idea
-1. Iterate over all elements
-2. For each element:
-    * If smallest element of unsorted sublist, swap with left-most unsorted element
-
-#### Details
-* **Data structure:** Array
-* **Space:** `O(1)`
-* **Best Case:** Already sorted, `O(n^2)`
-* **Worst Case:** Reverse sorted, `O(n^2)`
-* **Average:** `O(n^2)`
-
-#### Advantages
-* Simple
-* Can sort in-place
-* Low memory usage for small datasets
-
-#### Disadvantages
-* Very inefficient for large datasets
-
-#### Visualization
-
-![SelectionSort](Sorting/Animations/Selection%20Sort.gif "Selection Sort")
-
-![SelectionSort](Sorting/Animations/Selection%20Sort%202.gif "Selection Sort 2")
--------------------------------------------------------
-### 4.3 Bubble Sort
-#### Idea
-1. Iterate over all elements
-2. For each element:
-    * Swap with next element if out of order
-3. Repeat until no swaps needed
-
-#### Details
-* **Data structure:** Array
-* **Space:** `O(1)`
-* **Best Case:** Already sorted `O(n)`
-* **Worst Case:** Reverse sorted, `O(n^2)`
-* **Average:** `O(n^2)`
-
-#### Advantages
-* Easy to detect if list is sorted
-
-#### Disadvantages
-* Very inefficient for large datasets
-* Much worse than even insertion sort
-
-#### Visualization
-
-![BubbleSort](Sorting/Animations/Bubble%20Sort.gif "Bubble Sort")
--------------------------------------------------------
-### 4.4 Merge Sort
-#### Idea
-1. Divide list into smallest unit (1 element)
-2. Compare each element with the adjacent list
-3. Merge the two adjacent lists
-4. Repeat
-
-#### Details
-* **Data structure:** Array
-* **Space:** `O(n) auxiliary`
-* **Best Case:** `O(nlog(n))`
-* **Worst Case:** Reverse sorted, `O(nlog(n))`
-* **Average:** `O(nlog(n))`
-
-#### Advantages
-* High efficiency on large datasets
-* Nearly always O(nlog(n))
-* Can be parallelized
-* Better space complexity than standard Quicksort
-
-#### Disadvantages
-* Still requires O(n) extra space
-* Slightly worse than Quicksort in some instances
-
-#### Visualization
-
-![MergeSort](Sorting/Animations/Merge%20Sort.gif "Merge Sort")
-
-![MergeSort](Sorting/Animations/Merge%20Sort%202.gif "Merge Sort 2")
--------------------------------------------------------
-### 4.5 Quicksort
-#### Idea
-1. Choose a **pivot** from the array
-2. Partition: Reorder the array so that all elements with values *less* than the pivot come before the pivot, and all values *greater* than the pivot come after
-3. Recursively apply the above steps to the sub-arrays
-
-#### Details
-* **Data structure:** Array
-* **Space:** `O(n)`
-* **Best Case:** `O(nlog(n))`
-* **Worst Case:** All elements equal, `O(n^2)`
-* **Average:** `O(nlog(n))`
-
-#### Advantages
-* Can be modified to use O(log(n)) space
-* Very quick and efficient with large datasets
-* Can be parallelized
-* Divide and conquer algorithm
-
-#### Disadvantages
-* Not stable (could swap equal elements)
-* Worst case is worse than Merge Sort
-
-#### Optimizations
-* Choice of pivot:
-    * Choose median of the first, middle, and last elements as pivot
-    * Counters worst-case complexity for already-sorted and reverse-sorted
-
-#### Visualization
-
-![QuickSort](Sorting/Animations/Quicksort.gif)
+int main()
+{
+    pair <int, char> p;
+    pair <int, char> p1(2, 'b');
+    p = make_pair(1, 'a');
+    cout << p.first << ' ' <<  p.second << endl;
+    cout << p1.first << ' ' << p1.second << endl;
+    return 0;
+}
+```
+**Output**
+```c++
+1 a
+2 b
+```
