@@ -654,6 +654,9 @@ dabc
 ```
 -------------------------------------------------------
 ### 1.9 Priority Queue `std::priority_queue`
+
+A priority queue is a container that provides constant time extraction of the largest element, at the expense of logarithmic insertion. It is similar to the heap in which we can add element at any time but only the maximum element can be retrieved. In a priority queue, an element with high priority is served before an element with low priority.
+
 **Use for**
 * First-In First-Out operations where **priority** overrides arrival time
 * Ex: CPU scheduling (smallest job first, system/user priority)
@@ -661,6 +664,21 @@ dabc
 
 **Notes**
 * Often implemented as a `std::vector`
+
+**Time Complexity**
+
+| Operation    | Time Complexity |             what do?!                                            |
+|--------------|-----------------|------------------------------------------------------------------|
+|push( )|`O(logN)`|Inserts a new element in the priority queue|
+|pop( )|`O(logN)`| Removes the largest element from the priority queue|
+|top( )|`O(1)`|Returns a reference to the largest element in the priority queue|
+|empty( )|`O(1)`|Returns true if the priority queue is empty and false if the priority queue has at least one element|
+|size( )|`O(1)`|Returns the number of element in the priority queue|
+
+**Declaration**
+```c++
+priority_queue<int> pq;
+```
 
 **Example Code**
 ```c++
@@ -681,6 +699,33 @@ unsigned int size = p.size();
 
 // Remove
 p.pop();
+```
+**Implementation**
+```c++
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+int main()
+{
+    priority_queue<int> pq;
+    pq.push(10);
+    pq.push(20);
+    pq.push(5);
+    while(!pq.empty())
+    {
+        cout << pq.top() << endl;
+        pq.pop();
+    }
+    return 0;
+}
+```
+**Output**
+```c++
+20
+10
+5
 ```
 -------------------------------------------------------
 ### 1.10 Pair `std::pair`
