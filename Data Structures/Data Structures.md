@@ -621,6 +621,7 @@ An unordered set is implemented with a hash table, where keys are hashed into ha
 ```c
 unordered_set <data_type> set_name
 ```
+**`set vs unordered_set`**
 
 |     cmp           |     set             | unordered_set|
 |---------------|---------------------|------------------|
@@ -633,21 +634,6 @@ unordered_set <data_type> set_name
 **Use unordered_set when**
 * We need to keep a set of distinct elements and no ordering is required.
 * We need single element access i.e. no traversal
-
-```c++
-multiset<int> ms; 
-//the same as set but allows Duplicates.
-```
-**Use for**
-* Removing duplicates
-* Ordered dynamic storage
-
-**Do not use for**
-* Simple storage
-* Direct access by index
-
-**Notes**
-* Sets are often implemented with binary search trees
 
 **Time Complexity**
 
@@ -663,75 +649,142 @@ multiset<int> ms;
 |insert()|`O(log(n))`|insert a new element|
 |size()|`O(1)`|Returns the size of the set or the number of elements in the set|
 
-**Traverse**
+**Implementation of set**
 ```c++
-void traverse(set<int> s)
-{
-    set <int>::iterator it;
-    for(it = s.begin();it != s.end();++it)
-        cout << *it <<  ‘ ‘;
-    cout << endl;
-}
-```
-
-**Example Code**
-```c++
-std::set<int> s;
-
-//---------------------------------
-// General Operations
-//---------------------------------
-
-// Insert
-s.insert(20);
-
-// Size
-unsigned int size = s.size();
-
-// Iterate
-for(std::set<int>::iterator it = s.begin(); it != s.end(); it++) {
-    std::cout << *it << std::endl;
-}
-
-// Remove
-s.erase(20);
-
-// Clear
-s.clear();
-
-//---------------------------------
-// Container-Specific Operations
-//---------------------------------
-
-// Find if an element exists
-bool exists = (s.find(20) != s.end());
-
-// Count the number of elements with a certain value
-unsigned int count = s.count(20);
-```
-**Implementation**
-```c++
-#include <iostream>
-#include <set>
-
+#include<bits/stdc++.h>
 using namespace std;
 
 int main()
 {
-    set <int> s;
-    set <int>::iterator it;
-    int A[] = {3, 5, 2, 1, 5, 4};
-    for(int i = 0;i < 6;++i)
-        s.insert(A[i]);
-    for(it = s.begin();it != s.end();++it)
-        cout << *it << ' ';
+    set<int> demo_set;
+
+    demo_set.insert(20);
+    demo_set.insert(30);
+    demo_set.insert(10);
+    demo_set.insert(90);
+    demo_set.insert(80);
+    demo_set.insert(12);
+    //duplicates
+    demo_set.insert(20);
+    demo_set.insert(90);
+
+    cout << "Elements are unique and sorted:" << endl;
+    // traversing the set using iterators
+    for (auto it = demo_set.begin(); it != demo_set.end(); it++)
+    {
+        cout << *it << " ";
+    }
     cout << endl;
-    return 0;
+
+    auto it2 = demo_set.find(12);
+    auto it3 = demo_set.find(80);
+
+    demo_set.erase(it2, it3);
+
+    cout << "Elements in the set after erasing:" << endl;
+    for (auto it = demo_set.begin(); it != demo_set.end(); it++)
+    {
+        cout << *it << " ";
+    }
+    cout << endl;
+
 }
 ```
 **Output**
 ```c++
-1 2 3 4 5
+Elements are unique and sorted:
+10 12 20 30 80 90 
+Elements in the set after erasing:
+10 80 90 
+```
+
+**Implementation of Multi Set**
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    multiset<int> demo_multiset;
+
+    demo_multiset.insert(20);
+    demo_multiset.insert(30);
+    demo_multiset.insert(10);
+    demo_multiset.insert(90);
+    demo_multiset.insert(80);
+    demo_multiset.insert(12);
+    //duplicates
+    demo_multiset.insert(20);
+    demo_multiset.insert(90);
+
+    cout << "Duplicates are allowed:" << endl;
+    // traversing the set using iterators
+    for (auto it = demo_multiset.begin(); it != demo_multiset.end(); it++)
+    {
+        cout << *it << " ";
+    }
+    cout << endl;
+
+    auto it2 = demo_multiset.find(12);
+    auto it3 = demo_multiset.find(80);
+
+    demo_multiset.erase(it2, it3);
+
+    cout << "Elements in the multiset after erasing:" << endl;
+    for (auto it = demo_multiset.begin(); it != demo_multiset.end(); it++)
+    {
+        cout << *it << " ";
+    }
+    cout << endl;
+
+}
+```
+**Output**
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    unordered_set<int> demo_us;
+
+    demo_us.insert(20);
+    demo_us.insert(30);
+    demo_us.insert(10);
+    demo_us.insert(90);
+    demo_us.insert(80);
+    demo_us.insert(12);
+    //duplicates
+    demo_us.insert(20);
+    demo_us.insert(90);
+
+    cout << "Elements are unique and in any order:" << endl;
+    // traversing the set using iterators
+    for (auto it = demo_us.begin(); it != demo_us.end(); it++)
+    {
+        cout << *it << " ";
+    }
+    cout << endl;
+
+    auto it2 = demo_us.find(20);
+
+    demo_us.erase(it2);
+
+    cout << "After erasing:" << endl;
+
+    for (auto it = demo_us.begin(); it != demo_us.end(); it++)
+    {
+        cout << *it << " ";
+    }
+    cout << endl;
+}
+```
+**Output**
+```c++
+Elements are unique and in any order:
+12 80 20 30 10 90 
+After erasing:
+12 80 30 10 90 
 ```
 -------------------------------------------------------
 ### 1.7 Stack `std::stack`
