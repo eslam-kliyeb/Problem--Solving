@@ -11,7 +11,7 @@
 		- [2 Vector `std::vector`](#12-vector-stdvector)
 		- [3 Deque `std::deque`](#13-deque-stddeque)
 		- [4 List `std::list` and `std::forward_list`](#14-list-stdlist-and-stdforward_list)
-		- [5 Map `std::map` and `std::unordered_map`](#15-map-stdmap-and-stdunordered_map)
+		- [5 Map `std::map` and `std::multimap` and `std::unordered_map`](#15-map-stdmap-and-stdmultimap-and-stdunordered_map)
 		- [6 Set `std::set` and `std::multistd`](#16-set-stdset-and-stdmultistd)
 		- [7 Stack `std::stack`](#17-stack-stdstack)
 		- [8 Queue `std::queue`](#18-queue-stdqueue)
@@ -190,6 +190,20 @@ In a regular queue, elements are added from the rear and removed from the front.
 | empty()  |          `O(1)` 		|returns true if the deque is empty|
 |at()|`O(n)`|sets/returns the element at specified index|
 
+**Iteration**
+```c++
+for(int i = 0 ; i < n ; ++i){
+      scanf("%d", &x);
+      dq.push_back(x);
+}
+for(int i = 0 ; i < n ; ++i)
+    printf("%d ", dq[i]);
+for(int x : dq)
+    printf("%d ", x);
+for(auto x = dq.begin() ; x!=dq.end() ; ++x)
+    printf("%d ", *x);
+```
+
 **Example Code**
 ```c++
 std::deque<int> d;
@@ -324,9 +338,11 @@ Elements after removing all occurrence of 5  from List
 4 3 1
 ```
 -------------------------------------------------------
-### 1.5 Map `std::map` and `std::unordered_map`
+### 1.5 Map `std::map` and `std::multimap` and `std::unordered_map`
 
 Maps are containers which store elements by mapping their value against a particular key. It stores the combination of key value and mapped value following a specific order. Here key value are used to uniquely identify the elements mapped to it. The data type of key value and mapped value can be different. Elements in map are always in sorted order by their corresponding key and can be accessed directly by their key using bracket operator ([ ]).
+
+*Multimap* is nothing different than a normal map except the fact that in a multimap mutiple values can have the same key.And other factors are just the same between a Map and a Multimap.
 
 **Use for**
 * Key-value pairs
@@ -529,8 +545,10 @@ Map is not empty
 ### 1.6 Set `std::set` and `std::multistd`
 
 Sets are containers which store only unique values and permit easy look ups. The values in the sets are stored in some specific order (like ascending or descending). Elements can only be inserted or deleted, but cannot be modified. We can access and traverse set elements using iterators just like vectors.
-multiset<T> ms;     //the same as set but allows Duplicates.
-
+```c++
+multiset<int> ms; 
+//the same as set but allows Duplicates.
+```
 **Use for**
 * Removing duplicates
 * Ordered dynamic storage
