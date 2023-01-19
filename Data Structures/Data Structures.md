@@ -572,7 +572,55 @@ Map is not empty
 -------------------------------------------------------
 ### 1.6 Set `std::set` and `std::multistd` and `std::unordered_set`
 
-Sets are containers which store only unique values and permit easy look ups. The values in the sets are stored in some specific order (like ascending or descending). Elements can only be inserted or deleted, but cannot be modified. We can access and traverse set elements using iterators just like vectors.
+In  C++ STL(standard template library), there are some special containers: Set, Multiset, Unordered set, Unordered multiset. These containers are very helpful in programming because of their features. In this article, we will discuss the features of Set, Multiset, Unordered set, and Unordered multiset, and we will see how the containers differ from each other.
+
+**1-Set**
+
+Sets are the containers that store unique elements in a specified order. Each value of the element in a set identifies it (the value is itself the key, of type T), and each value must be unique.
+
+* It stores the elements in sorted order. Elements are sorted in ascending order by default.
+* It stores only the unique elements. 
+* The elements in the set can only be inserted and deleted but cannot be modified.
+* It is implemented using a binary search tree.
+
+**Syntax**
+```c++
+set <data_type> set_name
+```
+**2-Multiset**
+
+Multisets are containers that store elements in a specified order and where multiple elements can have equivalent values.
+
+In a multiset, an element is also identified by its value (the value is itself the key, of type T). A multiset's elements can be added to or deleted from the container, but their values cannot be changed once they are inside the container (they are always const)
+
+* It also stores the elements in a sorted manner.
+* Multiset can store duplicate values.
+* All other properties of a multiset are the same as that of the set. 
+* Sets are traversed using iterators.
+
+**Syntax**
+```c++
+multiset <data_type> set_name
+```
+
+**3-Unordered Set**
+
+Unordered sets are containers that store unique elements in no particular order, and which allow fast retrieval of individual elements based on their value.
+
+The value of an element in an unordered set acts as both its key and its unique identifier. Since keys are immutable, elements in an unordered set cannot be changed after they have been added to the container; however, they can be added and removed.
+
+* It stores the elements in any order, with no specified order for storing elements. It generally depends upon the machine that we are using.
+* It stores unique elements.
+* It uses the hash table for storing the element.
+* All other properties are the same as that of the set.
+
+**Cost Of Hash Map**
+An unordered set is implemented with a hash table, where keys are hashed into hash table indices so that insertion is always randomized. All operations on the unordered set take constant time O(1) on average, which can go up to linear time O(n) in the worst case depending on the internal implementation of hash function, but they perform extremely well in practice and generally provide a constant time lookup operation
+
+**Syntax**
+```c
+unordered_set <data_type> set_name
+```
 
 |     cmp           |     set             | unordered_set|
 |---------------|---------------------|------------------|
