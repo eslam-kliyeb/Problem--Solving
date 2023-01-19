@@ -342,6 +342,14 @@ Elements after removing all occurrence of 5  from List
 
 Maps are containers which store elements by mapping their value against a particular key. It stores the combination of key value and mapped value following a specific order. Here key value are used to uniquely identify the elements mapped to it. The data type of key value and mapped value can be different. Elements in map are always in sorted order by their corresponding key and can be accessed directly by their key using bracket operator ([ ]).
 
+|     cmp           |    Map             | Multimap|
+|---------------|---------------------|------------------|
+|1        | It stores unique key-value pair where each key is unique   | It can store duplicate key-value pair where keys may not be unique|
+|2  | 	Using count() function on a map can only return two values which is either 0 or 1  | Using count() function on a multimap can return any non-negative integer |  
+|3     | Accessing Value of any key is easy and directly accessible       | Accessing value of any key is not easy and is not directly accessible |
+|4  | Deleting in a map using key will delete only one key-value pair  | Deleting in a multimap using key will delete all the key-value pair having same key|                      
+|5   | Map can be used when a simple look up table having unique key-value pairs is required for quickly accessing to the value using the key  | Multimap can be used when grouping of values together using the keys are required|
+
 *Multimap* is nothing different than a normal map except the fact that in a multimap mutiple values can have the same key.And other factors are just the same between a Map and a Multimap.
 
 **Use for**
