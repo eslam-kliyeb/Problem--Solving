@@ -52,7 +52,6 @@ Vectors are sequence containers that have dynamic size. In other words, vectors 
 
 **Do not use for**
 * Insertion/deletion in the middle of the list
-* Dynamically changing storage
 * Non-integer indexing
 
 **Time Complexity**
