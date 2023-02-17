@@ -34,6 +34,7 @@ the file that you created
 - `queue<T> v`
 - `priority_queue<T> v`
 - `stack<T> v`
+- `unordered_map <T, V> v`
 
 ---
 
@@ -74,6 +75,7 @@ template <class T, class V> void _print(map <T, V> v);
 template <class T, class V> void _print(map <T, vector<V>> v);
 template <class T> void _print(multiset <T> v);
 template <class T, class V> void _print(unordered_map <T, vector<V>> v);
+template <class T, class V> void _print(unordered_map <T, V> v);
 template <class T> void _print(deque<T> v);
 template <class T> void _print(queue<T> v);
 template <class T> void _print(priority_queue<T> v);
@@ -89,6 +91,7 @@ template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_pr
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, vector<V>> v) {cerr << "[ \n"; for (auto i : v) {cerr << endl;_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(unordered_map <T, vector<V>> v) {cerr << "[ \n"; for (auto i : v) {cerr << endl;_print(i); cerr << " ";} cerr << "]";}
+template <class T, class V> void _print(unordered_map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T> void _print(deque<T> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T> void _print(queue<T> v) {cerr << "[ "; while (!v.empty()) {_print(v.front()); v.pop(); cerr << " ";} cerr << "]";}
 template <class T> void _print(priority_queue<T> v) {cerr << "[ "; while (!v.empty()) {_print(v.top()); v.pop(); cerr << " ";} cerr << "]";}
