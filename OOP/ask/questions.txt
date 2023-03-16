@@ -1,0 +1,6 @@
+1,-1,1,11,0,,,
+2,-1,2,11,0,,,
+3,-1,1,11,0,kl,,
+4,-1,13,11,1,It was nice to chat to youuuuu,no,
+5,211,13,45,0,Please search archive before asking,,
+6,-1,11,45,0,Please,,
