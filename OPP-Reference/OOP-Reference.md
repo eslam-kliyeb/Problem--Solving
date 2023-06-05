@@ -126,8 +126,10 @@ some text
   2. `Outside class definition`
 
 
+
   1. Inside class definition
-     The member function is defined inside the class definition it can be defined directly. Similar to accessing a data member in the class we can also access the public member functions through the class object using the dot operator (.).
+  
+The member function is defined inside the class definition it can be defined directly. Similar to accessing a data member in the class we can also access the public member functions through the class object using the dot operator (.).
 
 `Syntax:`
   ```
